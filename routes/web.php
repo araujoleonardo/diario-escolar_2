@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfessorController;
+use App\Http\Controllers\AlunoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//ALUNOS
+Route::get('/aluno', [AlunoController::class, 'index'])->name('aluno.index')->middleware('auth');
+
+//PROFESSORES
+Route::get('/professor', [ProfessorController::class, 'index'])->name('professor.index')->middleware('auth');

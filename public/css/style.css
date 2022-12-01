@@ -1,3 +1,7 @@
 .btn-toggle-nav li a{
     width: 93%;
 }
+
+ul li .btn:hover {
+    background-color: #bbdff5;
+}

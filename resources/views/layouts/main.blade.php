@@ -62,119 +62,65 @@
 
         <!-- Sidebar / Menu lateral -->
         <div class="row bg-white">
-            <div class="col-md-2 rounded-3 border shadow m-2" style="min-height: 700px;">
+            <div class="col-md-2 rounded-3 border shadow m-2 p-2" style="min-height: 700px;">
                 <div class="text-center p-2">
                     <h3>Menu</h3>
                 </div>
                 <hr>
-                <ul class="list-unstyled p-2">
-                    <li class="active">
-                        <a href="{{ url('/home') }}" class="list-group-item list-group-item-action list-group-item-light rounded-3">
-                            <i class="bi-house-door-fill h4 text-primary"></i>
-                            PAGINA INICIAL
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                        <a href="/home" class="btn btn-outline-light text-dark rounded w-100 border text-start mb-2">
+                            <i class="bi-house-door-fill text-primary"></i>
+                            Página Inicial
                         </a>
                     </li>
 
                     <li>
-                        <a class="list-group-item list-group-item-action list-group-item-light rounded-3" data-bs-toggle="collapse" href="#professorMenu" aria-expanded="false">
-                            <i class="bi-person-square h4 text-primary"></i>
-                            PROFESSOR
-                            <i class="bi-arrow-down-short h5"></i>
-                        </a>
-                        <div class="collapse" id="professorMenu">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">ALUNO</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">SERVIDOR</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">PROFESSOR</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">ESCOLA</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">USUÁRIO</a>
-                            </li>
-                        </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a class="list-group-item list-group-item-action list-group-item-light rounded-3" data-bs-toggle="collapse" href="#alunoMenu" aria-expanded="false">
-                            <i class="bi-mortarboard h4 text-primary"></i>
-                            ALUNO
-                            <i class="bi-arrow-down-short h5"></i>
-                        </a>
-                        <div class="collapse" id="alunoMenu">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">ALUNO</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">SERVIDOR</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">PROFESSOR</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">ESCOLA</a>
-                            </li>
-                        </ul>
-                        </div>
-                    </li>
-
-                    <li class="active">
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3">
-                            <i class="bi-building h4 text-primary"></i>
-                            TURMAS
-                        </a>
-                    </li>
-
-                    <li class="active">
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3">
-                            <i class="bi-filter-square h4 text-primary"></i>
-                            MATRICULA
+                        <a href="{{ route('professor.index') }}" class="btn btn-outline-light text-dark rounded w-100 border text-start  mb-2">
+                            <i class="bi-columns-gap text-primary"></i>
+                            Professores
                         </a>
                     </li>
 
                     <li>
-                        <a class="list-group-item list-group-item-action list-group-item-light rounded-3" data-bs-toggle="collapse" href="#consultasMenu" aria-expanded="false">
-                            <i class="bi-file-earmark-text h4 text-primary"></i>
-                            CONSULTAS
-                            <i class="bi-arrow-down-short h5"></i>
+                        <a href="{{ route('aluno.index') }}" class="btn btn-outline-light text-dark rounded w-100 border text-start  mb-2">
+                            <i class="bi-columns-gap text-primary"></i>
+                            Alunos
                         </a>
-                        <div class="collapse" id="consultasMenu">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">ALUNO</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">SERVIDOR</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">PROFESSOR</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">ESCOLA</a>
-                            </li>
-                        </ul>
-                        </div>
                     </li>
 
-                    <li class="active">
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3">
-                            <i class="bi-calendar-range h4 text-primary"></i>
-                            PERIODO ESCOLAR
+                    <li>
+                        <a href="#" class="btn btn-outline-light text-dark rounded w-100 border text-start  mb-2">
+                            <i class="bi-columns-gap text-primary"></i>
+                            Turmas
                         </a>
                     </li>
-                    
-                    <li class="active">
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3">
-                            <i class="bi-journal-text h4 text-primary"></i>
-                            DISCIPLINAS
+
+                    <li>
+                        <a href="#" class="btn btn-outline-light text-dark rounded w-100 border text-start  mb-2">
+                            <i class="bi-columns-gap text-primary"></i>
+                            Matricula
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="btn btn-outline-light text-dark rounded w-100 border text-start  mb-2">
+                            <i class="bi-columns-gap text-primary"></i>
+                            Periodo Escolar
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="btn btn-outline-light text-dark rounded w-100 border text-start  mb-2">
+                            <i class="bi-columns-gap text-primary"></i>
+                            Disciplinas
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="btn btn-outline-light text-dark rounded w-100 border text-start  mb-2">
+                            <i class="bi-columns-gap text-primary"></i>
+                            Cunsultas
                         </a>
                     </li>
                 </ul>
