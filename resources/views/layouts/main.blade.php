@@ -68,59 +68,59 @@
                     <h3>Menu</h3>
                 </div>
                 <hr>
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <ul class="nav nav-pills flex-column mb-auto">
                     <li>
-                        <a href="/home" class="btn btn-outline-light text-dark rounded w-100 border text-start mb-2">
-                            <i class="bi-house-door-fill text-primary"></i>
+                        <a href="/home" class="{{ !Route::Is('home') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-house-door-fill me-2"></i>
                             Página Inicial
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{ route('professor.index') }}" class="btn btn-outline-light text-dark rounded w-100 border text-start  mb-2">
-                            <i class="bi-columns-gap text-primary"></i>
+                        <a href="{{ route('professor.index') }}" class="{{ !Route::Is('professor.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-grid me-2"></i>
                             Professores
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{ route('aluno.index') }}" class="btn btn-outline-light text-dark rounded w-100 border text-start  mb-2">
-                            <i class="bi-columns-gap text-primary"></i>
+                        <a href="{{ route('aluno.index') }}" class="{{ !Route::Is('aluno.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-grid me-2"></i>
                             Alunos
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="btn btn-outline-light text-dark rounded w-100 border text-start  mb-2">
-                            <i class="bi-columns-gap text-primary"></i>
+                        <a href="{{ route('turmas.index') }}" class="{{ !Route::Is('turmas.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-grid me-2"></i>
                             Turmas
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="btn btn-outline-light text-dark rounded w-100 border text-start  mb-2">
-                            <i class="bi-columns-gap text-primary"></i>
+                        <a href="{{ route('matricula.index') }}" class="{{ !Route::Is('matricula.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-grid me-2"></i>
                             Matricula
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="btn btn-outline-light text-dark rounded w-100 border text-start  mb-2">
-                            <i class="bi-columns-gap text-primary"></i>
+                        <a href="{{ route('periodo.index') }}" class="{{ !Route::Is('periodo.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-grid me-2"></i>
                             Periodo Escolar
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="btn btn-outline-light text-dark rounded w-100 border text-start  mb-2">
-                            <i class="bi-columns-gap text-primary"></i>
+                        <a href="{{ route('disciplinas.index') }}" class="{{ !Route::Is('disciplinas.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-grid me-2"></i>
                             Disciplinas
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="btn btn-outline-light text-dark rounded w-100 border text-start  mb-2">
-                            <i class="bi-columns-gap text-primary"></i>
+                        <a href="#" class="btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-grid me-2"></i>
                             Cunsultas
                         </a>
                     </li>
@@ -143,7 +143,6 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('js')
 </body>
 </html>

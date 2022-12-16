@@ -15,53 +15,8 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        return view('alunos.alunoIndex');
-    }
-
-    public function listar()
-    {
-        $alunos = Alunos::all();
-        $output = '';
-
-        if($alunos->count() > 0){
-            $output.='
-                <table class="table table-striped table-sm text-center align-middle">
-                <thead>
-                    <tr>
-                        <th>NOME</th>
-                        <th>NASCIMENTO</th>
-                        <th>SEXO</th>
-                        <th>CIDADE</th>
-                        <th>BAIRRO</th>
-                        <th>ENDEREÇO</th>
-                        <th>TELEFONE</th>
-                        <th>OPÇÕES</th>
-                    </tr>
-                </thead>
-                <tbody>';
-                foreach ($alunos as $aluno) {
-                    $output .= '<tr>
-                        <td>' . $aluno->user->name . '</td>
-                        <td>' . $aluno->nascimento_aluno . '</td>
-                        <td>' . $aluno->sexo_aluno . '</td>
-                        <td>' . $aluno->municipio_aluno . '</td>
-                        <td>' . $aluno->bairro_aluno . '</td>
-                        <td>' . $aluno->endereco_aluno . '</td>
-                        <td>' . $aluno->telefone_aluno . '</td>
-                        <td>
-                            <a href="#" id="#" class="text-primary mx-1 showIcon"><i class="bi-file-earmark-text h4"></i></a>
-    
-                            <a href="#" id="' . $aluno->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editAluno"><i class="bi-pencil-square h4"></i></a>
-    
-                            <a href="#" id="' . $aluno->user->id . '" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></a>
-                        </td>
-                    </tr>';
-                }
-                $output .= '</tbody></table>';
-                echo $output;            
-        }else{
-            echo '<h1 class="text-center text-secondary my-5">Não exitem alunos cadastrados!</h1>';
-        }
+        $alunos = Alunos::get();
+        return view('alunos.alunoIndex', compact('alunos'));
     }
 
     /**
@@ -71,7 +26,7 @@ class AlunoController extends Controller
      */
     public function create()
     {
-        return view('alunos.addAluno');
+        //
     }
 
     /**
@@ -102,9 +57,7 @@ class AlunoController extends Controller
             'telefone_aluno' => $request->telefone_aluno,
         ]);
 
-		return response()->json([
-			'status' => 200,
-		]);
+		return redirect()->route('aluno.index');
     }
 
     /**
@@ -124,7 +77,7 @@ class AlunoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
         //
     }
@@ -136,9 +89,34 @@ class AlunoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $user = User::find($request->id);
+
+        $aldataUser = [
+            'name' => $request->nome,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'user_profile' => 'aluno'
+        ];
+
+        $aluno = Alunos::find($request->id);
+
+        $aldataAluno = [
+            'nome_social_aluno' => $request->nome_social,
+            'nascimento_aluno' => $request->nascimento_aluno,
+            'sexo_aluno' => $request->sexo_aluno,
+            'cpf_aluno' => $request->cpf_aluno,
+            'municipio_aluno' => $request->municipio_aluno,
+            'bairro_aluno' => $request->bairro_aluno,
+            'endereco_aluno' => $request->endereco_aluno,
+            'cep_aluno' => $request->cep_aluno,
+            'telefone_aluno' => $request->telefone_aluno,
+        ];
+
+        $aluno->update($aldataAluno);
+        $user->update($aldataUser);
+        return redirect()->route('aluno.index');
     }
 
     /**
@@ -151,5 +129,6 @@ class AlunoController extends Controller
     {
         $id = $request->id;
         User::destroy($id);
+        return redirect()->route('aluno.index');
     }
 }

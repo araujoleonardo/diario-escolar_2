@@ -14,7 +14,44 @@
                 </button>
             </div>
             <div class="card-body" id="show_all_alunos">
-                <h1 class="text-center text-secondary my-5">Loading...</h1>
+                @if ($alunos->count() > 0)
+                    <table class="table table-striped table-sm text-center align-middle">
+                        <thead>
+                            <tr>
+                                <th>NOME</th>
+                                <th>NASCIMENTO</th>
+                                <th>SEXO</th>
+                                <th>CIDADE</th>
+                                <th>BAIRRO</th>
+                                <th>ENDEREÇO</th>
+                                <th>TELEFONE</th>
+                                <th>OPÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($alunos as $aluno)
+                                <tr>
+                                    <td>{{ $aluno->user->name }}</td>
+                                    <td>{{ $aluno->nascimento_aluno }}</td>
+                                    <td>{{ $aluno->sexo_aluno }}</td>
+                                    <td>{{ $aluno->municipio_aluno }}</td>
+                                    <td>{{ $aluno->bairro_aluno }}</td>
+                                    <td>{{ $aluno->endereco_aluno }}</td>
+                                    <td>{{ $aluno->telefone_aluno }}</td>
+                                    <td class="d-flex">
+                                        <a href="#" class="text-primary mx-1"><i class="bi-file-earmark-text h4"></i></a>
+                
+                                        <a href="#" class="text-success mx-1" data-bs-toggle="modal" data-bs-target="#editAluno{{$aluno->id}}"><i class="bi-pencil-square h4"></i></a>
+
+                                        <a href="#" class="text-danger mx-1" data-bs-toggle="modal" data-bs-target="#deleteAluno{{$aluno->id}}"><i class="bi-trash h4"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <h1 class="text-center text-secondary my-5">Não exitem alunos cadastrados!</h1>
+                @endif
             </div>
         </div>
     </div>
@@ -23,91 +60,11 @@
 @endsection
 
 @section('js')
-    <script>
-        $(function(){
-
-            
-
-            //Adicionar Aluno
-            $("#add_aluno_form").submit(function(e) {
-                e.preventDefault();
-                const fd = new FormData(this);
-                $("#add_aluno_btn").text('Adicionando...');
-                $.ajax({
-                    url: '{{ route('aluno.create') }}',
-                    method: 'post',
-                    data: fd,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.status == 200) {
-                        Swal.fire(
-                            'Cadastrado!',
-                            'Aluno Adicionado!',
-                            'success'
-                        )
-                        listarAlunos();
-                        }
-                        $("#add_aluno_form")[0].reset();
-                        $("#novoAluno").modal('hide');
-                    }
-                });
-            });
-
-            //Deletar Aluno
-            $(document).on('click', '.deleteIcon', function(e) {
-                e.preventDefault();
-                let id = $(this).attr('id');
-                let csrf = '{{ csrf_token() }}';
-                Swal.fire({
-                    title: 'Excluir registro?',
-                    text: "Não será possível reverter!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Sim, excluir!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                        url: '{{ route('aluno.delete') }}',
-                        method: 'delete',
-                        data: {
-                            id: id,
-                            _token: csrf
-                        },
-                        success: function(response) {
-                            Swal.fire(
-                            'Deletado!',
-                            'Você excluiu o registro.',
-                            'success'
-                            )
-                            listarAlunos();
-                        }
-                        });
-                    }
-                })
-            });
-
-            listarAlunos();
-
-            //Listar alunos
-            function listarAlunos(){
-                $.ajax({
-                    url: '{{ route('aluno.listar') }}',
-                    method: 'GET',
-                    success: function(response) {
-                        $('#show_all_alunos').html(response);
-                        $("table").DataTable({
-                            "language": {
-                            "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
-                            }
-                        });
-                    }
-                });
-            }
-        });
+    <script>            
+    $("table").DataTable({
+        "language": {
+        "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+        }
+    });
     </script>
 @endsection
