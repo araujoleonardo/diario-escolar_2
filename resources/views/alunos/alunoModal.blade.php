@@ -200,11 +200,10 @@
                             <label for="sexo_aluno" class="form-label">Sexo</label>
                             <select class="form-select @error('sexo_aluno') is-invalid @enderror" name="sexo_aluno"
                                 id="sexo_aluno">
-                                <option value="" selected>Selecione um sexo</option>
                                 <option value="masculino" @if (old('sexo_aluno') == 'masculino') selected @endif>
                                     Maculino
                                 </option>
-                                <option value="feminino" @if (old('sexo_aluno') == 'feminino') selected @endif>
+                                <option value="feminino" @if (old('sexo_aluno') == 'feminino') selected @endif {{ $aluno->sexo_aluno == 'feminino' ? "selected='selected'" : "" }}>
                                     Feminino
                                 </option>
                             </select>
@@ -284,7 +283,7 @@
 @foreach ($alunos as $aluno)
 <div class="modal fade" id="deleteAluno{{$aluno->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Deletar Aluno?</h5>
@@ -296,7 +295,7 @@
                     @csrf                    
                     <div class="modal-body row g-3">
 
-                        <h3>A ação não poderá ser desfeita!</h3>
+                        <h4 class="text-center">A ação não poderá ser desfeita!</h4>
 
                     </div>
                 </div>

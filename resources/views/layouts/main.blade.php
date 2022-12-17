@@ -112,16 +112,16 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('disciplinas.index') }}" class="{{ !Route::Is('disciplinas.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                        <a href="{{ route('disciplina.index') }}" class="{{ !Route::Is('disciplina.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
                             <i class="bi-grid me-2"></i>
                             Disciplinas
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="btn btn-outline-light nav-link link-dark text-start mb-2">
+                        <a href="{{ route('consulta.index') }}" class="{{ !Route::Is('consulta.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
                             <i class="bi-grid me-2"></i>
-                            Cunsultas
+                            Consultas
                         </a>
                     </li>
                 </ul>

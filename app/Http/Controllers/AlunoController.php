@@ -91,31 +91,23 @@ class AlunoController extends Controller
      */
     public function update(Request $request)
     {
-        $user = User::find($request->id);
-
-        $aldataUser = [
-            'name' => $request->nome,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'user_profile' => 'aluno'
-        ];
 
         $aluno = Alunos::find($request->id);
 
-        $aldataAluno = [
-            'nome_social_aluno' => $request->nome_social,
-            'nascimento_aluno' => $request->nascimento_aluno,
-            'sexo_aluno' => $request->sexo_aluno,
-            'cpf_aluno' => $request->cpf_aluno,
-            'municipio_aluno' => $request->municipio_aluno,
-            'bairro_aluno' => $request->bairro_aluno,
-            'endereco_aluno' => $request->endereco_aluno,
-            'cep_aluno' => $request->cep_aluno,
-            'telefone_aluno' => $request->telefone_aluno,
-        ];
+        $aluno->user->name = $request->nome;
+        $aluno->nome_social_aluno = $request->nome_social;
+        $aluno->nascimento_aluno = $request->nascimento_aluno;
+        $aluno->sexo_aluno = $request->sexo_aluno;
+        $aluno->cpf_aluno = $request->cpf_aluno;
+        $aluno->municipio_aluno = $request->municipio_aluno;
+        $aluno->bairro_aluno = $request->bairro_aluno;
+        $aluno->endereco_aluno = $request->endereco_aluno;
+        $aluno->cep_aluno = $request->cep_aluno;
+        $aluno->telefone_aluno = $request->telefone_aluno;
 
-        $aluno->update($aldataAluno);
-        $user->update($aldataUser);
+        $aluno->user->save();
+        $aluno->save();
+
         return redirect()->route('aluno.index');
     }
 

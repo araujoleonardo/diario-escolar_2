@@ -15,7 +15,7 @@
             </div>
             <div class="card-body" id="show_all_alunos">
                 @if ($alunos->count() > 0)
-                    <table class="table table-striped table-sm text-center align-middle">
+                    <table class="table table-striped table-bordered table-sm align-middle">
                         <thead>
                             <tr>
                                 <th>NOME</th>
@@ -38,12 +38,12 @@
                                     <td>{{ $aluno->bairro_aluno }}</td>
                                     <td>{{ $aluno->endereco_aluno }}</td>
                                     <td>{{ $aluno->telefone_aluno }}</td>
-                                    <td class="d-flex">
-                                        <a href="#" class="text-primary mx-1"><i class="bi-file-earmark-text h4"></i></a>
+                                    <td class="d-flex justify-content-around gap-1">
+                                        <a href="#" class="btn btn-success btn-sm" title="Detalhes"><i class="bi-eye"></i></a>
                 
-                                        <a href="#" class="text-success mx-1" data-bs-toggle="modal" data-bs-target="#editAluno{{$aluno->id}}"><i class="bi-pencil-square h4"></i></a>
+                                        <a href="#" class="btn btn-primary btn-sm" title="Editar" data-bs-toggle="modal" data-bs-target="#editAluno{{$aluno->id}}"><i class="bi-pencil-square"></i></a>
 
-                                        <a href="#" class="text-danger mx-1" data-bs-toggle="modal" data-bs-target="#deleteAluno{{$aluno->id}}"><i class="bi-trash h4"></i></a>
+                                        <a href="#" class="btn btn-danger btn-sm" title="Deletar" data-bs-toggle="modal" data-bs-target="#deleteAluno{{$aluno->id}}"><i class="bi-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
