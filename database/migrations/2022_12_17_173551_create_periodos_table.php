@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDisciplinasTable extends Migration
+class CreatePeriodosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateDisciplinasTable extends Migration
      */
     public function up()
     {
-        Schema::create('disciplinas', function (Blueprint $table) {
+        Schema::create('periodos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_disciplina')->unique();
-            $table->text('detalhes');
+            $table->string('nome_periodo');
+            $table->date('data_inicio');
+            $table->date('data_final');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateDisciplinasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('disciplinas');
+        Schema::dropIfExists('periodos');
     }
 }

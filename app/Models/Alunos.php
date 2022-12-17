@@ -21,6 +21,7 @@ class Alunos extends Model
         'telefone_aluno',
         'user_id',
     ];
+    
     /**
      * Relacionamento com a tabela users
      *

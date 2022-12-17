@@ -1,7 +1,7 @@
 {{-- Cadastro de Disciplinas --}}
 <div class="modal fade" id="novaDisciplina" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Cadastrar Disciplina</h5>
@@ -14,10 +14,10 @@
                     <div class="modal-body row g-3">
 
                         <div class="col-md-12 mb-3">
-                            <label for="nome" class="form-label">Nome da disciplina</label>
-                            <input type="text" class="form-control @error('nome') is-invalid @enderror"
-                                name="nome" id="nome" value="{{ old('nome') }}" required>
-                            @error('nome')
+                            <label for="nome_disciplina" class="form-label">Nome da disciplina</label>
+                            <input type="text" class="form-control @error('nome_disciplina') is-invalid @enderror"
+                                name="nome_disciplina" id="nome_disciplina" value="{{ old('nome_disciplina') }}" required>
+                            @error('nome_disciplina')
                                 <small class="invalid-feedback fw-bold">{{ $message }}</small>
                             @enderror
                         </div>
@@ -47,7 +47,7 @@
 @foreach ($disciplinas as $disciplina)
 <div class="modal fade" id="editDisciplina{{$disciplina->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Editar Disciplina</h5>
@@ -61,17 +61,17 @@
                     <div class="modal-body row g-3">
 
                         <div class="col-md-12 mb-3">
-                            <label for="nome" class="form-label">Nome da disciplina</label>
-                            <input type="text" class="form-control @error('nome') is-invalid @enderror"
-                                name="nome" id="nome" value="{{ old('nome', $disciplina->nome) }}" required>
-                            @error('nome')
+                            <label for="nome_disciplina" class="form-label">Nome da disciplina</label>
+                            <input type="text" class="form-control @error('nome_disciplina') is-invalid @enderror"
+                                name="nome_disciplina" id="nome_disciplina" value="{{ old('nome_disciplina', $disciplina->nome_disciplina) }}" required>
+                            @error('nome_disciplina')
                                 <small class="invalid-feedback fw-bold">{{ $message }}</small>
                             @enderror
                         </div>
 
                         <div class="col-md-12 mb-3">
                             <label for="detalhes" class="form-label">Detalhes</label>
-                            <input type="text" class="form-control @error('nome') is-invalid @enderror"
+                            <input type="text" class="form-control @error('detalhes') is-invalid @enderror"
                                 name="detalhes" id="detalhes" value="{{ old('detalhes', $disciplina->detalhes) }}" required>
                             @error('detalhes')
                                 <small class="invalid-feedback fw-bold">{{ $message }}</small>

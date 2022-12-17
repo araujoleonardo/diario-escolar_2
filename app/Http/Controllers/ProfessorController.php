@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Professores;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfessorController extends Controller
@@ -13,7 +15,8 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        return view('professores.professorIndex');
+        $professores = Professores::get();
+        return view('professores.professorIndex', compact('professores'));
     }
 
     /**
@@ -34,7 +37,26 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create([
+            'name' => $request->nome,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'user_profile' => 'professor'
+        ]);
+
+        $professor = Professores::create([
+            'user_id' => $user->id,
+            'cpf_professor' => $request->cpf_professor,
+            'nascimento_professor' => $request->nascimento_professor,
+            'sexo_professor' => $request->sexo_professor,
+            'municipio_professor' => $request->municipio_professor,
+            'bairro_professor' => $request->bairro_professor,
+            'endereco_professor' => $request->endereco_professor,
+            'cep_professor' => $request->cep_professor,
+            'telefone_professor' => $request->telefone_professor,
+        ]);
+
+		return redirect()->route('professor.index');
     }
 
     /**
@@ -66,9 +88,24 @@ class ProfessorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $professor = Professores::find($request->id);
+
+        $professor->user->name = $request->nome;
+        $professor->cpf_professor = $request->cpf_professor;
+        $professor->nascimento_professor = $request->nascimento_professor;
+        $professor->sexo_professor = $request->sexo_professor;
+        $professor->municipio_professor = $request->municipio_professor;
+        $professor->bairro_professor = $request->bairro_professor;
+        $professor->endereco_professor = $request->endereco_professor;
+        $professor->cep_professor = $request->cep_professor;
+        $professor->telefone_professor = $request->telefone_professor;
+
+        $professor->user->save();
+        $professor->save();
+
+        return redirect()->route('professor.index');
     }
 
     /**
@@ -77,8 +114,10 @@ class ProfessorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->id;
+        User::destroy($id);
+        return redirect()->route('professor.index');
     }
 }

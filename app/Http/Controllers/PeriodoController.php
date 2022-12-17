@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Disciplinas;
+use App\Models\Periodos;
 use Illuminate\Http\Request;
 
-class DisciplinaController extends Controller
+class PeriodoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class DisciplinaController extends Controller
      */
     public function index()
     {
-        $disciplinas = Disciplinas::get();
-        return view('disciplinas.disciplinaIndex', compact('disciplinas'));
+        $periodos = Periodos::get();
+        return view('periodo.periodoIndex', compact('periodos'));
     }
 
     /**
@@ -36,12 +36,13 @@ class DisciplinaController extends Controller
      */
     public function store(Request $request)
     {
-        $disciplina = Disciplinas::create([
-            'nome_disciplina' => $request->nome_disciplina,
-            'detalhes' => $request->detalhes,
+        $periodo = periodos::create([
+            'nome_periodo' => $request->nome_periodo,
+            'data_inicio' => $request->data_inicio,
+            'data_final' => $request->data_final,
         ]);
 
-		return redirect()->route('disciplina.index');
+		return redirect()->route('periodo.index');
     }
 
     /**
@@ -75,14 +76,15 @@ class DisciplinaController extends Controller
      */
     public function update(Request $request)
     {
-        $disciplina = Disciplinas::find($request->id);
+        $periodo = Periodos::find($request->id);
 
-        $disciplina->nome_disciplina = $request->nome_disciplina;
-        $disciplina->detalhes = $request->detalhes;
+        $periodo->nome_periodo = $request->nome_periodo;
+        $periodo->data_inicio = $request->data_inicio;
+        $periodo->data_final = $request->data_final;
 
-        $disciplina->save();
+        $periodo->save();
 
-        return redirect()->route('disciplina.index');
+        return redirect()->route('periodo.index');
     }
 
     /**
@@ -94,7 +96,7 @@ class DisciplinaController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->id;
-        Disciplinas::destroy($id);
-        return redirect()->route('disciplina.index');
+        Periodos::destroy($id);
+        return redirect()->route('periodo.index');
     }
 }

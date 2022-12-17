@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Disciplinas extends Model
+class Periodos extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nome_disciplina',
-        'detalhes',
+        'nome_periodo',
+        'data_inicio',
+        'data_final',
     ];
 }

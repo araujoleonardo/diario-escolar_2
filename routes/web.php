@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\DisciplinaController;
+use App\Http\Controllers\PeriodoController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -35,6 +36,10 @@ Route::delete('/aluno/delete/{id}', [AlunoController::class, 'destroy'])->name('
 
 //PROFESSORES
 Route::get('/professor', [ProfessorController::class, 'index'])->name('professor.index')->middleware('auth');
+Route::get('/professor/listar', [ProfessorController::class, 'listar'])->name('professor.listar')->middleware('auth');
+Route::put('/professor/update/{id}', [ProfessorController::class, 'update'])->name('professor.update')->middleware('auth');
+Route::post('/professor/create', [ProfessorController::class, 'store'])->name('professor.create')->middleware('auth');
+Route::delete('/professor/delete/{id}', [ProfessorController::class, 'destroy'])->name('professor.delete')->middleware('auth');
 
 //DISCIPLINAS
 Route::get('/disciplina', [DisciplinaController::class, 'index'])->name('disciplina.index')->middleware('auth');
@@ -47,7 +52,11 @@ Route::delete('/disciplina/delete/{id}', [DisciplinaController::class, 'destroy'
 Route::get('/matricula', function () { return view('matricula.index');})->name('matricula.index')->middleware('auth');
 
 //PERIODOS
-Route::get('/periodo', function () { return view('periodo.index');})->name('periodo.index')->middleware('auth');
+Route::get('/periodo', [PeriodoController::class, 'index'])->name('periodo.index')->middleware('auth');
+Route::get('/periodo/listar', [PeriodoController::class, 'listar'])->name('periodo.listar')->middleware('auth');
+Route::put('/periodo/update/{id}', [PeriodoController::class, 'update'])->name('periodo.update')->middleware('auth');
+Route::post('/periodo/create', [PeriodoController::class, 'store'])->name('periodo.create')->middleware('auth');
+Route::delete('/periodo/delete/{id}', [PeriodoController::class, 'destroy'])->name('periodo.delete')->middleware('auth');
 
 //TURMAS
 Route::get('/turmas', function () { return view('turmas.index');})->name('turmas.index')->middleware('auth');

@@ -78,49 +78,49 @@
 
                     <li>
                         <a href="{{ route('professor.index') }}" class="{{ !Route::Is('professor.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
-                            <i class="bi-grid me-2"></i>
+                            <i class="bi-grid-fill me-2"></i>
                             Professores
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('aluno.index') }}" class="{{ !Route::Is('aluno.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
-                            <i class="bi-grid me-2"></i>
+                            <i class="bi-grid-fill me-2"></i>
                             Alunos
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('turmas.index') }}" class="{{ !Route::Is('turmas.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
-                            <i class="bi-grid me-2"></i>
+                            <i class="bi-grid-fill me-2"></i>
                             Turmas
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('matricula.index') }}" class="{{ !Route::Is('matricula.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
-                            <i class="bi-grid me-2"></i>
+                            <i class="bi-grid-fill me-2"></i>
                             Matricula
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('periodo.index') }}" class="{{ !Route::Is('periodo.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
-                            <i class="bi-grid me-2"></i>
+                            <i class="bi-grid-fill me-2"></i>
                             Periodo Escolar
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('disciplina.index') }}" class="{{ !Route::Is('disciplina.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
-                            <i class="bi-grid me-2"></i>
+                            <i class="bi-grid-fill me-2"></i>
                             Disciplinas
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('consulta.index') }}" class="{{ !Route::Is('consulta.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
-                            <i class="bi-grid me-2"></i>
+                            <i class="bi-grid-fill me-2"></i>
                             Consultas
                         </a>
                     </li>
