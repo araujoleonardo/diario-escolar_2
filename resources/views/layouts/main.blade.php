@@ -15,6 +15,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
     <div class="container-fluid">
@@ -62,119 +63,65 @@
 
         <!-- Sidebar / Menu lateral -->
         <div class="row bg-white">
-            <div class="col-md-2 rounded-3 border shadow m-2" style="min-height: 700px;">
+            <div class="col-md-2 rounded-3 border shadow m-2 p-2" style="min-height: 700px;">
                 <div class="text-center p-2">
                     <h3>Menu</h3>
                 </div>
                 <hr>
-                <ul class="list-unstyled p-2">
-                    <li class="active">
-                        <a href="{{ url('/home') }}" class="list-group-item list-group-item-action list-group-item-light rounded-3">
-                            <i class="bi-house-door-fill h4 text-primary"></i>
-                            PAGINA INICIAL
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li>
+                        <a href="/home" class="{{ !Route::Is('home') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-house-door-fill me-2"></i>
+                            Página Inicial
                         </a>
                     </li>
 
                     <li>
-                        <a class="list-group-item list-group-item-action list-group-item-light rounded-3" data-bs-toggle="collapse" href="#professorMenu" aria-expanded="false">
-                            <i class="bi-person-square h4 text-primary"></i>
-                            PROFESSOR
-                            <i class="bi-arrow-down-short h5"></i>
-                        </a>
-                        <div class="collapse" id="professorMenu">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">ALUNO</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">SERVIDOR</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">PROFESSOR</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">ESCOLA</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">USUÁRIO</a>
-                            </li>
-                        </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a class="list-group-item list-group-item-action list-group-item-light rounded-3" data-bs-toggle="collapse" href="#alunoMenu" aria-expanded="false">
-                            <i class="bi-mortarboard h4 text-primary"></i>
-                            ALUNO
-                            <i class="bi-arrow-down-short h5"></i>
-                        </a>
-                        <div class="collapse" id="alunoMenu">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">ALUNO</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">SERVIDOR</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">PROFESSOR</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">ESCOLA</a>
-                            </li>
-                        </ul>
-                        </div>
-                    </li>
-
-                    <li class="active">
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3">
-                            <i class="bi-building h4 text-primary"></i>
-                            TURMAS
-                        </a>
-                    </li>
-
-                    <li class="active">
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3">
-                            <i class="bi-filter-square h4 text-primary"></i>
-                            MATRICULA
+                        <a href="{{ route('professor.index') }}" class="{{ !Route::Is('professor.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-grid-fill me-2"></i>
+                            Professores
                         </a>
                     </li>
 
                     <li>
-                        <a class="list-group-item list-group-item-action list-group-item-light rounded-3" data-bs-toggle="collapse" href="#consultasMenu" aria-expanded="false">
-                            <i class="bi-file-earmark-text h4 text-primary"></i>
-                            CONSULTAS
-                            <i class="bi-arrow-down-short h5"></i>
+                        <a href="{{ route('aluno.index') }}" class="{{ !Route::Is('aluno.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-grid-fill me-2"></i>
+                            Alunos
                         </a>
-                        <div class="collapse" id="consultasMenu">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">ALUNO</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">SERVIDOR</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">PROFESSOR</a>
-                            </li>
-                            <li>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3 p-1 ms-3">ESCOLA</a>
-                            </li>
-                        </ul>
-                        </div>
                     </li>
 
-                    <li class="active">
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3">
-                            <i class="bi-calendar-range h4 text-primary"></i>
-                            PERIODO ESCOLAR
+                    <li>
+                        <a href="{{ route('turma.index') }}" class="{{ !Route::Is('turma.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-grid-fill me-2"></i>
+                            Turmas
                         </a>
                     </li>
-                    
-                    <li class="active">
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-3">
-                            <i class="bi-journal-text h4 text-primary"></i>
-                            DISCIPLINAS
+
+                    <li>
+                        <a href="{{ route('matricula.index') }}" class="{{ !Route::Is('matricula.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-grid-fill me-2"></i>
+                            Matricula
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('periodo.index') }}" class="{{ !Route::Is('periodo.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-grid-fill me-2"></i>
+                            Periodo Escolar
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('disciplina.index') }}" class="{{ !Route::Is('disciplina.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-grid-fill me-2"></i>
+                            Disciplinas
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('consulta.index') }}" class="{{ !Route::Is('consulta.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                            <i class="bi-grid-fill me-2"></i>
+                            Consultas
                         </a>
                     </li>
                 </ul>
