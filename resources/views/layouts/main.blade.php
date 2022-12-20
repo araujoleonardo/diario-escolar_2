@@ -91,7 +91,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('turmas.index') }}" class="{{ !Route::Is('turmas.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
+                        <a href="{{ route('turma.index') }}" class="{{ !Route::Is('turma.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
                             <i class="bi-grid-fill me-2"></i>
                             Turmas
                         </a>
