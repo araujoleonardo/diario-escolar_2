@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Disciplinas;
+use App\Models\Disciplinas_Professores;
 use App\Models\Professores;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,8 +17,9 @@ class ProfessorController extends Controller
      */
     public function index()
     {
+        $disciplinas = Disciplinas::get();
         $professores = Professores::get();
-        return view('professores.professorIndex', compact('professores'));
+        return view('professores.professorIndex', compact('professores'), compact('disciplinas'));
     }
 
     /**
@@ -26,7 +29,7 @@ class ProfessorController extends Controller
      */
     public function create()
     {
-        //
+       //
     }
 
     /**
@@ -37,6 +40,7 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
+
         $user = User::create([
             'name' => $request->nome,
             'email' => $request->email,
@@ -55,6 +59,12 @@ class ProfessorController extends Controller
             'cep_professor' => $request->cep_professor,
             'telefone_professor' => $request->telefone_professor,
         ]);
+
+
+        // alocar professor para disciplinas
+        foreach ($request->disciplina as $disciplina_id) {
+            $professor->disciplinasAsProfessor()->attach($disciplina_id);
+        }
 
 		return redirect()->route('professor.index');
     }

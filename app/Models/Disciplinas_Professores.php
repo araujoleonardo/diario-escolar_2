@@ -5,21 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Disciplinas extends Model
+class Disciplinas_Professores extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nome_disciplina',
-        'detalhes',
+        'professores_id', 
+        'disciplinas_id'
     ];
 
     /**
-     * Relacionamento com a tabela professor
+     * Relacionamento com a tabela disciplinas
      *
      * @return void
      */
-    public function professores(){
-        return $this->belongsToMany(Professores::class);
+    public function disciplina()
+    {
+        return $this->belongsTo(Disciplinas::class);
     }
 }

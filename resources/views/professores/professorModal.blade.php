@@ -13,7 +13,7 @@
                     @csrf
                     <div class="modal-body row g-3">
 
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-5 mb-3">
                             <label for="nome" class="form-label">Nome do professor</label>
                             <input type="text" class="form-control @error('nome') is-invalid @enderror"
                                 name="nome" id="nome" value="{{ old('nome') }}" required>
@@ -22,7 +22,7 @@
                             @enderror
                         </div>
 
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label for="nascimento_professor" class="form-label">Data de nascimento</label>
                             <input type="date" class="form-control @error('nascimento_professor') is-invalid @enderror"
                                 name="nascimento_professor" id="nascimento_professor" value="{{ old('nascimento_professor') }}" required>
@@ -57,7 +57,7 @@
                             @enderror
                         </div>
 
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="municipio_professor" class="form-label">Cidade</label>
                             <input type="text" class="form-control @error('municipio_professor') is-invalid @enderror"
                                 name="municipio_professor" id="municipio_professor" value="{{ old('municipio_professor') }}" required>
@@ -66,7 +66,7 @@
                             @enderror
                         </div>
 
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="bairro_professor" class="form-label">Bairro</label>
                             <input type="text" class="form-control @error('bairro_professor') is-invalid @enderror"
                                 name="bairro_professor" id="bairro_professor" value="{{ old('bairro_professor') }}" required>
@@ -101,6 +101,25 @@
                                 <small class="invalid-feedback fw-bold">{{ $message }}</small>
                             @enderror
                         </div>
+                        
+                        <h5 class="modal-title">Disciplinas</h5>
+                        <div class="row">
+                            @foreach ($disciplinas as $disciplina)
+                                <div class="col-3 form-check">
+                                    <input class="form-check-input" type="checkbox" value="{{ $disciplina->id }}"
+                                        id="disciplina" name="disciplina[]"
+                                        @if (is_array(old('disciplinas')) && in_array($disciplina->id, old('disciplinas'))) checked @endif>
+                                    <label class="form-check-label" for="disciplina">
+                                        {{ $disciplina->nome_disciplina }}
+                                    </label>
+                                </div>
+                            @endforeach
+                            @empty($disciplinas->toArray())
+                                <div class="fw-bold text-danger small">Não há cadastros de disciplinas</div>
+                            @endempty
+                        </div>
+                        
+                        <h5 class="modal-title">Dados de acesso ao sistema!</h5>
 
                         <div class="col-md-6 mb-3">
                             <label for="email" class="form-label">Email</label>

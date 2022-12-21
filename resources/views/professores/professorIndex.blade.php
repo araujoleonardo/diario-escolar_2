@@ -19,7 +19,7 @@
                     <thead>
                         <tr>
                             <th>NOME</th>
-                            <th>NASCIMENTO</th>
+                            <th>E-EMAIL</th>
                             <th>SEXO</th>
                             <th>CIDADE</th>
                             <th>BAIRRO</th>
@@ -32,7 +32,7 @@
                         @foreach($professores as $professor)
                             <tr>
                                 <td>{{ $professor->user->name }}</td>
-                                <td>{{ $professor->nascimento_professor }}</td>
+                                <td>{{ $professor->user->email }}</td>
                                 <td>{{ $professor->sexo_professor }}</td>
                                 <td>{{ $professor->municipio_professor }}</td>
                                 <td>{{ $professor->bairro_professor }}</td>
