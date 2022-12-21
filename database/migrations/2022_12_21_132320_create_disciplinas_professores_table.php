@@ -14,6 +14,7 @@ class CreateDisciplinasProfessoresTable extends Migration
     public function up()
     {
         Schema::create('disciplinas_professores', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('professores_id')->constrained();
             $table->foreignId('disciplinas_id')->constrained();
             $table->timestamps();
