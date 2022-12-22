@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Disciplinas;
-use App\Models\Disciplinas_Professores;
 use App\Models\Professores;
+use App\Models\Turmas;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -17,9 +17,10 @@ class ProfessorController extends Controller
      */
     public function index()
     {
+        $turmas = Turmas::get();
         $disciplinas = Disciplinas::get();
         $professores = Professores::get();
-        return view('professores.professorIndex', compact('professores'), compact('disciplinas'));
+        return view('professores.professorIndex', compact('professores', 'disciplinas', 'turmas'));
     }
 
     /**
@@ -64,6 +65,11 @@ class ProfessorController extends Controller
         // alocar professor para disciplinas
         foreach ($request->disciplina as $disciplina_id) {
             $professor->disciplinasAsProfessor()->attach($disciplina_id);
+        }
+
+        // alocar professor para turmas
+        foreach ($request->turma as $turma_id) {
+            $professor->turmasAsProfessor()->attach($turma_id);
         }
 
 		return redirect()->route('professor.index');

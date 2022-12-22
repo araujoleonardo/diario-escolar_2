@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alunos;
+use App\Models\Turmas;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,9 @@ class AlunoController extends Controller
      */
     public function index()
     {
+        $turmas = Turmas::get();
         $alunos = Alunos::get();
-        return view('alunos.alunoIndex', compact('alunos'));
+        return view('alunos.alunoIndex', compact('alunos', 'turmas'));
     }
 
     /**
@@ -56,6 +58,11 @@ class AlunoController extends Controller
             'cep_aluno' => $request->cep_aluno,
             'telefone_aluno' => $request->telefone_aluno,
         ]);
+
+        // alocar aluno para turma
+        foreach ($request->turma as $turma_id) {
+            $aluno->turmasAsAlunos()->attach($turma_id);
+        }
 
 		return redirect()->route('aluno.index');
     }

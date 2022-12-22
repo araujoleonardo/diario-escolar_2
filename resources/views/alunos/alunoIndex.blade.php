@@ -6,7 +6,7 @@
 
     <div class="pt-5 pb-5 ps-3 pe-3">
         <div class="card shadow">
-            <div class="card-header bg-info d-flex justify-content-between align-items-center">
+            <div class="card-header bg-primary bg-gradient d-flex justify-content-between align-items-center">
                 <h3 class="text-light">Listagem de alunos</h3>
                 <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#novoAluno">
                     <i class="bi bi-plus-circle"></i>

@@ -21,17 +21,15 @@
     <div class="container-fluid">
         <!-- Navbar -->
         <div class="row bg-white">
-            <div class="col rounded-3 border shadow text-end m-2 p-2">
+            <div class="col rounded-3 border bg-primary bg-gradient shadow text-end m-2 p-2">
                 <nav class="container-fluid navbar">
-                    <h3>Diário Escolar</h3>
+                    <a href="{{ url('/home') }}" class="nav-link link-light p-0"><h4>Diário Escolar</h4></a>
                     <div class="d-flex">
                         @if (Route::has('login'))
                             @auth
-                                <a href="{{ url('/home') }}" class="nav-link">Inicio</a>
-
                                 <!-- Drop Down menu -->
                                 <div class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <a id="navbarDropdown" class="nav-link link-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -94,13 +92,6 @@
                         <a href="{{ route('turma.index') }}" class="{{ !Route::Is('turma.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
                             <i class="bi-grid-fill me-2"></i>
                             Turmas
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{ route('matricula.index') }}" class="{{ !Route::Is('matricula.index') ?: 'active' }} btn btn-outline-light nav-link link-dark text-start mb-2">
-                            <i class="bi-grid-fill me-2"></i>
-                            Matricula
                         </a>
                     </li>
 

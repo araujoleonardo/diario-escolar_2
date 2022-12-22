@@ -2,7 +2,7 @@
 <div class="modal fade" id="novoProfessor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content">
+        <div class="modal-content bg-light">
             <div class="modal-header">
                 <h5 class="modal-title">Cadastrar Professor</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -105,7 +105,7 @@
                         <h5 class="modal-title">Disciplinas</h5>
                         <div class="row">
                             @foreach ($disciplinas as $disciplina)
-                                <div class="col-3 form-check">
+                                <div class="col-2 form-check">
                                     <input class="form-check-input" type="checkbox" value="{{ $disciplina->id }}"
                                         id="disciplina" name="disciplina[]"
                                         @if (is_array(old('disciplinas')) && in_array($disciplina->id, old('disciplinas'))) checked @endif>
@@ -118,9 +118,25 @@
                                 <div class="fw-bold text-danger small">Não há cadastros de disciplinas</div>
                             @endempty
                         </div>
+
+                        <h5 class="modal-title">Turmas</h5>
+                        <div class="row">
+                            @foreach ($turmas as $turma)
+                                <div class="col-2 form-check">
+                                    <input class="form-check-input" type="checkbox" value="{{ $turma->id }}"
+                                        id="turma" name="turma[]"
+                                        @if (is_array(old('turmas')) && in_array($turma->id, old('turmas'))) checked @endif>
+                                    <label class="form-check-label" for="turma">
+                                        {{ $turma->nome_turma }}
+                                    </label>
+                                </div>
+                            @endforeach
+                            @empty($turmas->toArray())
+                                <div class="fw-bold text-danger small">Não há cadastros de turmas</div>
+                            @endempty
+                        </div>
                         
                         <h5 class="modal-title">Dados de acesso ao sistema!</h5>
-
                         <div class="col-md-6 mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror"
@@ -161,13 +177,12 @@
     </div>
 </div>
 
-
 {{-- Editar professor --}}
 @foreach ($professores as $professor)
 <div class="modal fade" id="editProfessor{{$professor->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content">
+        <div class="modal-content bg-light">
             <div class="modal-header">
                 <h5 class="modal-title">Editar Professor</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -279,10 +294,9 @@
 </div>
 @endforeach
 
-
 {{-- Deletar professor --}}
 @foreach ($professores as $professor)
-<div class="modal fade" id="deleteProfessor{{$professor->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade bg-light" id="deleteProfessor{{$professor->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

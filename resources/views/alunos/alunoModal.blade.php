@@ -111,6 +111,24 @@
                             @enderror
                         </div>
 
+                        <h5 class="modal-title">Turmas</h5>
+                        <div class="row">
+                            @foreach ($turmas as $turma)
+                                <div class="col-2 form-check">
+                                    <input class="form-check-input" type="checkbox" value="{{ $turma->id }}"
+                                        id="turma" name="turma[]"
+                                        @if (is_array(old('turmas')) && in_array($turma->id, old('turmas'))) checked @endif>
+                                    <label class="form-check-label" for="turma">
+                                        {{ $turma->nome_turma }}
+                                    </label>
+                                </div>
+                            @endforeach
+                            @empty($turmas->toArray())
+                                <div class="fw-bold text-danger small">Não há cadastros de turmas</div>
+                            @endempty
+                        </div>
+
+                        <h5 class="modal-title">Dados de acesso ao sistema!</h5>
                         <div class="col-md-6 mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror"

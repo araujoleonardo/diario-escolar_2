@@ -40,4 +40,14 @@ class Professores extends Model
     {
         return $this->belongsToMany(Disciplinas::class);
     }
+
+    /**
+     * Relacionamento com a tabela turmas
+     *
+     * @return void
+     */
+    public function turmasAsProfessor()
+    {
+        return $this->belongsToMany(Turmas::class);
+    }
 }

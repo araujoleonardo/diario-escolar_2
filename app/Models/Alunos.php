@@ -31,4 +31,14 @@ class Alunos extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Relacionamento com a tabela turmas
+     *
+     * @return void
+     */
+    public function turmasAsAlunos()
+    {
+        return $this->belongsToMany(Turmas::class);
+    }
 }

@@ -13,4 +13,22 @@ class Turmas extends Model
         'nome_turma',
         'turno',
     ];
+
+    /**
+     * Relacionamento com a tabela professor
+     *
+     * @return void
+     */
+    public function professores(){
+        return $this->belongsToMany(Professores::class);
+    }
+
+    /**
+     * Relacionamento com a tabela alunos
+     *
+     * @return void
+     */
+    public function alunos(){
+        return $this->belongsToMany(Alunos::class);
+    }
 }
