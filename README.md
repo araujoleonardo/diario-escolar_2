@@ -1,64 +1,91 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+# Sistema Web de Diário Escolar v2.0
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Usuários do Sistema
+- Admin
+- Professor
+- Aluno
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Serviços por Usuário
+- Secretária Acadêmica
+    - Cadastro de alunos
+    - Cadastro de turmas
+    - Consultar turmas
+    - Consultar notas
+    - Consultar faltas
+    - Consultar aulas
+- Professor
+    - Consultar turmas
+    - Consultar aulas
+    - Consultar notas
+    - Consultar faltas
+    - Registrar aula
+    - Registrar faltas
+    - Registrar notas
+- Aluno
+    - Solicitar informações sobre notas
+    - Solicitar informações sobre faltas
+    - Solicitar informações sobre datas de provas
+    - Solicitar informações sobre cronograma das aulas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Cenários
+Ministrando aulas (Cenário Atual Normal)
+- Ambiente
+    - Sala de aula com 40 alunos.
+- Atores
+    - Alunos
+    - Professor
+- Roteiro
+    - Professor entra na sala de aula e cumprimenta os alunos
+    - Professor acessa o computador e loga no sistema
+    - Professor acessa a função diário e faz chamada
+    - Professor anota as faltas dos alunos no diário
+    - Professor informa os alunos o assunto a ser dado
+    - O professor ministra a aula
+    - Alunos perguntam qual a data da avaliação
+    - O professor lê em suas anotações do sistema e informa
+    - O professor registra no diário a aula do dia, se despede dos alunos e retira-se da sala.
 
-## Learning Laravel
+## Requisitos Funcionais:
+- ``[RF01]`` Cadastrar alunos
+- ``[RF02]`` Cadastrar turmas
+- ``[RF03]`` Consultar turmas;
+- ``[RF04]`` Disponibilizar consulta aulas;
+- ``[RF05]`` Disponibilizar consulta de notas;
+- ``[RF06]`` Disponibilizar consulta de faltas;
+- ``[RF07]`` Registrar aulas;
+- ``[RF08]`` Registrar notas;
+- ``[RF09]`` Registrar faltas dos alunos;
+- ``[RF10]`` Sincronizar dados.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Requisitos não funcionais do sistema:
+### ``[RNF01]`` Eficiência: 
+O Sistema deve possuir um tempo máximo para a execução de
+uma determinada transação, oferecendo um controle de time out, caso a operação
+não tenha sido realizada por motivos independentes do sistema. Os avisos de
+erros ocorridos devem ser dados num curto espaço de tempo oferecendo ao
+usuário a possibilidade de correção o mais rapidamente possível.
+### ``[RNF02]`` Usabilidade: 
+O sistema deve possuir uma interface de fácil utilização e
+aprendizado, de modo que o usuário possa interagir com o sistema, garantindo
+eficiência e satisfação.
+### ``[RNF03]`` Segurança: 
+O sistema deve oferecer segurança, associando a cada
+usuário uma senha que o identifique unicamente no sistema.
+### ``[RNF04]`` Interoperabilidade: 
+O sistema deverá interagir com o navegador web
+(Browser), com menor esforço possível.
+### ``[RNF05]`` Funcionalidade: 
+O sistema web deve satisfazer a especificação dos
+requisitos
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### ########################################
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Pocotes instalados no projeto
+- https://github.com/lucascudo/laravel-pt-BR-localization
+- https://github.com/LaravelLegends/pt-br-validator
+- https://github.com/barryvdh/laravel-dompdf
+- https://laravel-excel.com/
+- https://laravel.com/docs/8.x/socialite
